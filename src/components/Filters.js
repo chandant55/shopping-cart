@@ -99,7 +99,7 @@ const Filters = () => {
           })
         }
       >
-        Clear Filters,searchQuery
+        Clear Filters
       </Button>
     </div>
   );
