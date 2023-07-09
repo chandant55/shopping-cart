@@ -67,7 +67,7 @@ const Filters = () => {
           inline
           label="Fast Delivery Only"
           name="group1"
-          type="radio"
+          type="checkbox"
           id={`inline-4`}
           onChange={() =>
             productDispatch({
