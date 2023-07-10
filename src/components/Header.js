@@ -9,7 +9,7 @@ import {
   Button,
 } from "react-bootstrap";
 import { FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CartState } from "../context/Context";
 import { AiFillDelete } from "react-icons/ai";
 
@@ -27,19 +27,23 @@ const Header = () => {
           <Navbar.Brand>
             <Link to="/">Shopping Cart</Link>
           </Navbar.Brand>
-          <Navbar.Text className="search">
-            <FormControl
-              onChange={(e) =>
-                productDispatch({
-                  type: "FILTER_BY_SEARCH",
-                  payload: e.target.value,
-                })
-              }
-              style={{ width: 500 }}
-              placeholder="search a product"
-              className="m-auto"
-            />
-          </Navbar.Text>
+          {useLocation().pathname.split("/")[1] !== "cart" && (
+            <Navbar.Text className="search">
+              <FormControl
+                style={{ width: 500 }}
+                type="search"
+                placeholder="search a product"
+                className="m-auto"
+                aria-label="Search"
+                onChange={(e) =>
+                  productDispatch({
+                    type: "FILTER_BY_SEARCH",
+                    payload: e.target.value,
+                  })
+                }
+              />
+            </Navbar.Text>
+          )}
           <Nav>
             <Dropdown alignRight>
               <Dropdown.Toggle variant="success">
